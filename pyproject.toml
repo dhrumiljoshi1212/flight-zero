@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flightzero"
+version = "0.1.0"
+description = "Airline reservation reliability and chaos-engineering laboratory"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["portalocker>=2.8"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov>=5.0", "ruff>=0.5"]
+
+[project.scripts]
+flightzero = "flightzero.cli.commands:main"
+
+[tool.setuptools.packages.find]
+include = ["flightzero*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
